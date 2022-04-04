@@ -13,7 +13,7 @@ public:
     ListNode* swapNodes(ListNode* head, int k) {
         vector<int> v;
         ListNode* temp = head;
-        while(temp!=nullptr){
+        while(temp!=nullptr){ //O(n)
             v.push_back(temp->val);
             temp=temp->next;
         }
