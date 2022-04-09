@@ -1,4 +1,4 @@
- map<char,int> mp;
+ unordered_map<char,int> mp;
 bool myComp(char a, char b){
     if(mp[a]==mp[b]) return a>b;
         return mp[a]>mp[b];
