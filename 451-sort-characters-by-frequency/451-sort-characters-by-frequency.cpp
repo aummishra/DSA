@@ -1,4 +1,4 @@
- unordered_map<char,int> mp;
+vector<int> mp(123);
 bool myComp(char a, char b){
     if(mp[a]==mp[b]) return a>b;
         return mp[a]>mp[b];
@@ -15,6 +15,7 @@ public:
        // cout<<mp['A']<<" "<<mp['b'];
         sort(s.begin(),s.end(),myComp);
         mp.clear();
+        mp.resize(123);
         return s;
     }
 };
