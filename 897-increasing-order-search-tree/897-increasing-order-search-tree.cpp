@@ -11,28 +11,19 @@
  */
 class Solution {
 public:
-    void inorder(TreeNode* root,vector<int> &v){
-        if(root==nullptr){
-          return;  
-        } 
-        inorder(root->left,v);
-        v.push_back(root->val);
-        inorder(root->right,v);
-    }
-    TreeNode* build(vector<int> &v){
-        if(v.size()==0) return nullptr;
-        TreeNode* root = new TreeNode(v[0]);
-        TreeNode* temp = root;
-        for(int i=1;i<v.size();i++){
-            TreeNode* x = new TreeNode(v[i]);
-            temp->right = x;
-            temp = x;
-        }
-        return root;
+    TreeNode* solve(TreeNode* root,TreeNode* cur){
+        if(root==nullptr) return cur;
+        cur = solve(root->left,cur);
+        cur->right = root;
+        root->left = nullptr;
+        cur = root;
+        return solve(root->right,cur);
+        
     }
     TreeNode* increasingBST(TreeNode* root) {
-        vector<int> v;
-        inorder(root,v);
-        return build(v);
+        TreeNode* dum = new TreeNode(0);
+        TreeNode* cur = dum;
+        solve(root,cur);
+        return dum->right;
     }
 };
