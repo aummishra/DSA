@@ -20,19 +20,18 @@ public:
         sum += root->val;
         help(root->right);
     }
-   long long calc(TreeNode* root,long long t){
+   long long calc(TreeNode* root){
         if(root==nullptr) return 0;
-       long long left = calc(root->left,t);
-       long long right = calc(root->right,t);
-           ans = max(ans,left * abs(sum-left));
-           ans = max(ans,right* abs(sum-right));
+       long long left = calc(root->left);
+       long long right = calc(root->right);
+         ans = max(ans,left * abs(sum-left));
+         ans = max(ans,right* abs(sum-right));
        return (left + right + root->val);
         
     }
     int maxProduct(TreeNode* root) {
         help(root);
-        long long t = sum/2;
-        long long x = calc(root,t);
+        long long x = calc(root);
         return ans%mod;
         
     }
