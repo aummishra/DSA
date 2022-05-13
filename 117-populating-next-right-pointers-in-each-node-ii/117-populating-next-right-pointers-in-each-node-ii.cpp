@@ -35,7 +35,7 @@ public:
                 if(curr->right!=nullptr) q.push(curr->right);
                 prev = curr;
             }
-            prev->next = nullptr;
+            //prev->next = nullptr;
         }
         return root;
     }
