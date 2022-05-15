@@ -15,11 +15,11 @@ public:
         if(root==nullptr){
             return 0;
         }
-        vector<int> v1;
+        vector<int> v;
         queue<TreeNode*> q;
         q.push(root);
         while(!q.empty()){
-            vector<int> v;
+            v.clear();
             int n = q.size();
             for(int i=0;i<n;i++){
                 TreeNode* curr = q.front();
@@ -28,11 +28,10 @@ public:
                 if(curr->right!=nullptr) q.push(curr->right);
                 v.push_back(curr->val);
             }
-            v1=v;
         }
         long long sum = 0;
-        for(int i=0;i<v1.size();i++){
-            sum+= v1[i];
+        for(int i=0;i<v.size();i++){
+            sum+= v[i];
         }
         return sum;
     }
