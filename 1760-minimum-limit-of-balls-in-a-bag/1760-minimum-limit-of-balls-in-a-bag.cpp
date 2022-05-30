@@ -20,12 +20,13 @@ public:
         //lo = 1;
         while(lo<hi){
             mid = (lo + hi)/2;
-            if(help(nums,mid)>op){
-                lo = mid+1;
+            mid = (lo + hi)/2;
+            if(help(nums,mid)<=op){
+                hi = mid;
             }
             else
-                hi = mid;
+                lo = mid+1;
         }
-        return lo;
+        return hi;
     }
 };
