@@ -12,6 +12,7 @@ public:
         }
         return val;
     }
+    
     int smallestDivisor(vector<int>& nums, int th) {
         int lo = 1;
         int hi;
@@ -29,5 +30,19 @@ public:
             }
         }
         return lo;
+       //Brute force solution - TLE, TC - O(N*10^6) as nums[i] can be upto 10^6, N can be upto 5*10^4.
+      /*  int ans=0;
+        for(int j=1;j<=hi;j++){
+            ans = 0;
+            for(int i=0;i<nums.size();i++){
+                if(nums[i]%j==0) ans+= nums[i]/j;
+                else ans+= nums[i]/j +1;
+            }
+            if(ans<=th){
+               // cout<<j<<" ";
+                return j;
+            }
+        }
+        return 0;*/
     }
 };
