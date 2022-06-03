@@ -1,24 +1,20 @@
 class NumMatrix {
+    vector<vector<int>> sum;
 public:
-     NumMatrix(vector<vector<int>>& matrix) {
-        vec.assign(matrix.size() ,vector<int>(matrix[0].size()+1, 0));
-        
-        for (int i = 0; i < matrix.size(); i++)
-            for (int j = 0; j < matrix[0].size(); j++)
-                vec[i][j+1] = vec[i][j] + matrix[i][j];
+    NumMatrix(vector<vector<int>>& matrix) {
+        sum.resize(1+matrix.size(), vector<int>(1+matrix[0].size()));
+        for(int i=1;i<sum.size();i++){
+            for(int j=1;j<sum[0].size();j++){
+                sum[i][j] = matrix[i-1][j-1] + sum[i-1][j] + sum[i][j-1] - sum[i-1][j-1];
+            }
+        }
     }
     
     int sumRegion(int row1, int col1, int row2, int col2) {
-        int res = 0;
-        
-        for (int i = row1; i <= row2; i++)
-            res += vec[i][col2+1] - vec[i][col1];
-        
-        return res;
+       // long long ans = 0;
+        return sum[row2+1][col2+1] - sum[row2+1][col1] - sum[row1][col2+1] + sum[row1][col1];
+        //AS padding is used.
     }
-    
-private:
-    vector<vector<int>> vec;
 };
 
 /**
