@@ -5,12 +5,12 @@ public:
         vector<int> ans;
         int zc = 0;
        for(int i=0;i<numbers.size();i++){
-           if(numbers[i]==0) zc++;
+          /* if(numbers[i]==0) zc++;
            if(numbers[i]==0 && zc == 2 && target ==0){
               ans.push_back(mp[0]);
                ans.push_back(i+1);
                break; 
-           }
+           }*/
           /* if(numbers[i]==target){
                 mp[numbers[i]] = i+1;
                continue;
