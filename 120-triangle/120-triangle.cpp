@@ -19,8 +19,9 @@ public:
         
     }*/
     int minimumTotal(vector<vector<int>>& triangle) {
+        //Top down -
         int n = triangle.size();
-        int dp[n][n];
+      /*  int dp[n][n];
         for(int j=0;j<=n-1;j++){
             dp[n-1][j] = triangle[n-1][j]; 
         }
@@ -31,11 +32,27 @@ public:
                 dp[i][j] = min(down,diagonal);
             }
         }
-       int ans = dp[0][0];
+       int ans = dp[0][0];*/
+        //space optimized top down
+        vector<int> front(n);
+        for(int j=0;j<=n-1;j++){
+            front[j] = triangle[n-1][j]; 
+        }
+         for(int i=n-2;i>=0;i--){
+             vector<int> next(n);
+            for(int j=0;j<=i;j++){
+                int down = triangle[i][j] + front[j];
+                int diagonal = triangle[i][j] + front[j+1];
+                next[j] = min(down,diagonal);
+            }
+             front = next;
+        }
+        return front[0];
        // int ans = solve(triangle,0,0);
-        return ans;
+        
+        //return ans;
     }
-        //Top down - 
+         
         
         
 };
