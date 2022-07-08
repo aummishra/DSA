@@ -2,13 +2,13 @@ class Solution {
 public:
     void dfs(vector<vector<int>> &adj,vector<vector<int>> &ans, int node,vector<int> &vis,vector<int> temp){
         temp.push_back(node);
-        //vis[node] = 1;
+           //vis[node] = 1;
         for(auto it:adj[node]){
            // temp.push_back(it);    
-            //if(vis[it]!=0){
+           // if(vis[it]!=0){
                 dfs(adj,ans,it,vis,temp);
             //}
-           // vis[node] = 0;
+            //vis[it] = 0;
         }
         if(node == adj.size()-1){
             ans.push_back(temp);
