@@ -8,7 +8,7 @@ public:
         if(arr[start] == 0) return true;
        // if(dp[start]!=-1) return dp[start];
         bool o1 = false,o2=false;
-        if(vis[start]==1) return false;
+       // if(vis[start]==1) return false;
         if(vis[start]==0){
             vis[start] = 1;
              o1 = solve(arr,start+arr[start]);
