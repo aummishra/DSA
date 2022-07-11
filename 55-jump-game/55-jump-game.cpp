@@ -10,7 +10,7 @@ public:
        }
        if(dp[i]!=-1) return dp[i];
        bool ans = false;
-       if(nums[i]==0) return false;
+      // if(nums[i]==0) return false;
        for(int j=1;j<=nums[i];++j){
            if(ans==true) return dp[i]=true;
            ans = (ans || solve(nums,i+j,n));
