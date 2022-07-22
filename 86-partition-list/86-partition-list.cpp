@@ -10,33 +10,29 @@
  */
 class Solution {
 public:
-    //s -> 1,2,2
-    //g -> 4,3,5
     ListNode* partition(ListNode* head, int x) {
-        vector<int> s;
-        vector<int> g;
+        if(head == nullptr) return head;
+        if(head->next==nullptr) return head;
+        ListNode* first = new ListNode();
+        ListNode* second = new ListNode();
+        ListNode* c = second;
+        ListNode* c1 = first;
         ListNode* temp = head;
         while(temp!=nullptr){
-            if(temp->val < x) s.push_back(temp->val);
-            else g.push_back(temp->val);
-            temp = temp->next;
+            if(temp->val < x){
+                first->next = temp;
+                first = first->next;
+            }
+            else{
+                second->next = temp;
+                second = second->next;
+            }
+            temp = temp->next; 
         }
-        ListNode* ans = new ListNode();
-        ListNode* res = ans;
-        int i = 0;
-        while(i<s.size()){
-            ListNode* temp1 = new ListNode(s[i]);
-            ans->next = temp1;
-            ans = ans->next;
-            i++;
-        }
-        int j=0;
-        while(j<g.size()){
-            ListNode* temp1 = new ListNode(g[j]);
-            ans->next = temp1;
-            ans = ans->next;
-            j++;
-        }
-        return res->next;
+        second->next = nullptr;// 1->1->0
+        head = c1->next; // head->0
+        first->next = c->next; //first->second
+        if(head !=nullptr) return head;
+        return first->next;
     }
 };
