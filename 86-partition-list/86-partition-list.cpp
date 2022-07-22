@@ -31,7 +31,7 @@ public:
         }
         second->next = nullptr;// 1->1->0
         head = c1->next; // head->0
-        first->next = c->next; //first->second
+        first->next = c->next; 
         if(head !=nullptr) return head;
         return first->next;
     }
