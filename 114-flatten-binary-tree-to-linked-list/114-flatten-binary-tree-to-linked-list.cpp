@@ -11,21 +11,19 @@
  */
 class Solution {
 public:
-    TreeNode* help(TreeNode* root){
-        if(root==nullptr){
-            return root;
-        }
-        TreeNode* temp = help(root->right);
-        root->right  = help(root->left);
-        TreeNode* temp1 = root;
-        while(temp1->right!=nullptr){
-            temp1 = temp1->right;
-        }
-        temp1->right = temp;
-        root->left = nullptr;
-        return root;
+    void preorder(vector<TreeNode*> &v,TreeNode* root){
+        if(root == nullptr) return;
+        v.push_back(root);
+        preorder(v,root->left);
+        preorder(v,root->right);
     }
     void flatten(TreeNode* root) {
-       root = help(root);
+        vector<TreeNode*> v;
+        preorder(v,root);
+        int n = v.size()-1;
+        for(int i=0;i<n;i++){
+            v[i]->right = v[i+1];
+            v[i]->left = nullptr;
+        }
     }
 };
