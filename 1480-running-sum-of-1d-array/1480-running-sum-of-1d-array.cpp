@@ -5,7 +5,7 @@ public:
         vector<int> res;
         res.push_back(ans);
         for(int i=1;i<nums.size();i++){
-            ans+= nums[i];
+            ans = ans+nums[i];
             res.push_back(ans);
         }
         return res;
