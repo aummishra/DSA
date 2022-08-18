@@ -1,5 +1,6 @@
 class Solution {
 public:
+    //TC - 
     static bool myComp(pair<int,int> a, pair<int,int> b){
         return a.second> b.second;
     }
@@ -12,7 +13,7 @@ public:
         for(auto it:mp){
             v.push_back({it.first,it.second});
         }
-        sort(v.begin(),v.end(),myComp);
+        sort(v.begin(),v.end(),myComp); //NlogN
         int n = arr.size();
         int N = n;
         int i = 0;
