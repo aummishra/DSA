@@ -48,9 +48,6 @@ public:
             }
             
         }
-       /* for(auto &it:dist){
-            ans = max(ans,it);
-        }*/
         return ans;
     }
 };
